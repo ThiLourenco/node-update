@@ -15,7 +15,7 @@ const formatBytes = (bytes, decimals = 2) => {
 
 const updateStatus = (size) => {
     const text = `Pending Bytes to Upload: <strong>${formatBytes(size)}</strong>`
-    document.getElementById(size).innerHTML = text;
+    document.getElementById("size").innerHTML = text
 }
 
 const showSize = () => {
@@ -28,6 +28,14 @@ const showSize = () => {
 
   bytesAmount = size;
   updateStatus(size);
+
+  const interval = setInterval(() => {
+    console.count();
+    const result = bytesAmount - 5e6;
+    bytesAmount = result < 0 ? 0 : result;
+    updateStatus(bytesAmount);
+    if (bytesAmount === 0) clearInterval(interval);
+  }, 50)
 }
 
 const onload = () => {
