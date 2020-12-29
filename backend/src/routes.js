@@ -10,10 +10,10 @@ class Routes {
       const { query: { socketId }} = url.parse(request.url, true);
       const redirecTo = headers.origin
 
-      this.#io.to(socketId).emit('file-updloaded', 5e9);
-      this.#io.to(socketId).emit('file-updloaded', 5e9);
-      this.#io.to(socketId).emit('file-updloaded', 5e9);
-      this.#io.to(socketId).emit('file-updloaded', 5e9);
+      this.#io.to(socketId).emit('file-uploaded', 5e9);
+      this.#io.to(socketId).emit('file-uploaded', 5e9);
+      this.#io.to(socketId).emit('file-uploaded', 5e9);
+      this.#io.to(socketId).emit('file-uploaded', 5e9);
 
       const onFinish = (response, redirecTo) => {
         response.writeHead(303, {
