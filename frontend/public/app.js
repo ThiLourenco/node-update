@@ -69,12 +69,12 @@ const onload = () => {
   const ioClient = io.connect(API_URL, { withCredentials: false });
   ioClient.on('connect', (msg) => {
     console.log('connected!', ioClient.id);
-    const targetUrl = API_URL + `/socketId=${ioClient.id}`;
+    const targetUrl = API_URL + `?socketId=${ioClient.id}`;
     configureForm(targetUrl);
   });
 
   ioClient.on(ON_UPLOAD_EVENT, (bytesReceived) => {
-    console.log(bytesReceived);
+    console.log('received', bytesReceived);
     bytesAmount = bytesAmount - bytesReceived;
     updateStatus(bytesAmount);
   });
